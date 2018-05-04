@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "486938912764",
+    "firebase_url": "https://uberdemo-2f53d.firebaseio.com",
+    "project_id": "uberdemo-2f53d",
+    "storage_bucket": "uberdemo-2f53d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486938912764:android:586f934d99e72e4d",
+        "android_client_info": {
+          "package_name": "alisahinaydogan.uberdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486938912764-ibkoae233cdhh0tlh069be23d02j2nab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alisahinaydogan.uberdemo",
+            "certificate_hash": "7144066021db657d78fdb76890899b77ab43ea95"
+          }
+        },
+        {
+          "client_id": "486938912764-8unfg8chqr78n5ftfkul4nmokh5ac4d8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6js1HmRHEDf1k_0jSRvNAZBScDqdEP4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486938912764-8unfg8chqr78n5ftfkul4nmokh5ac4d8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
