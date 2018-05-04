@@ -1,7 +1,6 @@
-package alisahinaydogan.uberdemo;
+package alisahinaydogan.uberdemo.ui.activity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +17,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DriverLoginActivity extends AppCompatActivity {
+import alisahinaydogan.uberdemo.ui.Fragment.DriverMapActivity;
+import alisahinaydogan.uberdemo.R;
+
+
+public class CustomerLoginActivity extends AppCompatActivity {
     EditText mEmail,mPassword;
     Button mLogin,mRegisteration;
 
@@ -30,6 +33,13 @@ public class DriverLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_login);
 
+        mEmail=(EditText)findViewById(R.id.email);
+        mPassword=(EditText)findViewById(R.id.password);
+        mLogin=(Button) findViewById(R.id.login);
+        mRegisteration=(Button) findViewById(R.id.register);
+
+
+
 
         mAuth=FirebaseAuth.getInstance();
         firebaseAuthListener=new FirebaseAuth.AuthStateListener() {
@@ -40,23 +50,13 @@ public class DriverLoginActivity extends AppCompatActivity {
                 FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                 if (user!=null){
 
-                    Intent intent= new Intent(DriverLoginActivity.this,DriverMapActivity.class);
+                    Intent intent= new Intent(CustomerLoginActivity.this,DriverMapActivity.class);
                     startActivity(intent);
                     finish();
                     return;
                 }
             }
         };
-
-
-        mEmail=(EditText)findViewById(R.id.email);
-        mPassword=(EditText)findViewById(R.id.password);
-        mLogin=(Button) findViewById(R.id.login);
-        mRegisteration=(Button) findViewById(R.id.register);
-
-
-
-
 
 
 
@@ -66,15 +66,15 @@ public class DriverLoginActivity extends AppCompatActivity {
 
                 final String email=mEmail.getText().toString();
                 final String password=mPassword.getText().toString();
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(!task.isSuccessful()){
-                            Toast.makeText(DriverLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
                         }else{
                             String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(user_id).child("name");
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id).child("name");
                             current_user_db.setValue(email);
                         }
                     }
@@ -90,12 +90,12 @@ public class DriverLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String email=mEmail.getText().toString();
                 final String password=mPassword.getText().toString();
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(DriverLoginActivity.this, new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()){
 
-                            Toast.makeText(DriverLoginActivity.this, "Sign in Error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CustomerLoginActivity.this, "Sign in Error", Toast.LENGTH_SHORT).show();
                         }
 
                     }
